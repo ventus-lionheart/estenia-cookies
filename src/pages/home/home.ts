@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { CartPage } from '../cart/cart';
 
 @Component({
 	selector: 'page-home',
@@ -7,22 +8,38 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  	constructor(public navCtrl: NavController) {
+  	constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   	}
 
   	Cookies = [
-		{name: 'Chocolate Chip', description: 'Our most popular cookie', imgUrl: 'chocolate-chip.jpg'},
-		{name: 'Snickerdoodles', description: 'The taste that you will always remember', imgUrl: 'snickerdoodles.jpg'},
-		{name: 'Oreo', description: 'The cookie you can never go wrong buying', imgUrl: 'oreo.jpg'},
-		{name: 'Double Chocolate', description: 'Double the amount of goodness', imgUrl: 'double-chocolate.jpg'},
-		{name: 'M&M', description: 'Who can forget M&M', imgUrl: 'm&m.jpg'}
-	]
+		{name: 'Chocolate Chip', description: 'Our most popular cookie', price: '3.99', imgUrl: 'chocolate-chip.jpg'},
+		{name: 'Snickerdoodles', description: 'The taste that you will always remember', price: '2.99', imgUrl: 'snickerdoodles.jpg'},
+		{name: 'Oreo', description: 'The cookie you can never go wrong buying', price: '3.50', imgUrl: 'oreo.jpg'},
+		{name: 'Double Chocolate', description: 'Double the amount of goodness', price: '3.99', imgUrl: 'double-chocolate.jpg'},
+		{name: 'M&M', description: 'Who can forget M&M', price: '2.50', imgUrl: 'm&m.jpg'}
+	];
 
-}
+	cart = [];
 
-interface Cookies {
-	name: string;
-	description: string;
-	imgUrl: string;
+	cartQuantity = 0;
+	totalPrice = 0;
+
+	addToCart(cookie) {
+		this.cart.push(cookie);
+		this.cartQuantity++;
+		this.totalPrice = this.totalPrice + parseFloat(cookie.price);
+		console.log(this.cart);
+		console.log(this.totalPrice);
+	}
+
+	openCart(){
+		let modal = this.modalCtrl.create(CartPage, { data: this.cart, quantity: this.cartQuantity, price: this.totalPrice });
+		modal.onDidDismiss(data => {
+     		this.cart = data.cart;
+			this.cartQuantity = data.quantity;
+			this.totalPrice = data.price;
+   		});
+    	modal.present();
+	}
 }

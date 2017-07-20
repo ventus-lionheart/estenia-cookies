@@ -1,32 +1,37 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title text-center>Estenia's Cookies</ion-title>
+		<ion-title>Estenia's Cookies</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-left clear (click)="openCart()">
+				<ion-icon name="cart"></ion-icon>{{cartQuantity}}
+      		</button>
+		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
 	<ion-grid>
 		<ion-row>
-			<ul>
-				<li *ngFor="let cookie of Cookies; let i = index">
-					<ion-col col-12>
+			<ion-col col-12>
+				<ul>
+					<li *ngFor="let cookie of Cookies; let i = index">
 						<ion-card>
 							<img src="../assets/img/{{cookie.imgUrl}}" />
 							<ion-card-content>
 								<ion-card-title>
-									{{cookie.name}}
+									{{cookie.name}}<span class="price">${{cookie.price}}</span>
 								</ion-card-title>
 								<p>
 									{{cookie.description}}
 								</p>
-								<button ion-button color="default" outline icon-left>
+								<button ion-button color="default" outline icon-left (click)="addToCart(cookie)">
 									<ion-icon name="add"></ion-icon>ADD
 								</button>
 							</ion-card-content>
 						</ion-card>
-					</ion-col>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-content>

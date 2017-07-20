@@ -1,19 +1,12 @@
-page-home {
-	ul {
-		padding: 0;
-		margin: 0;
-	}
-	li {
-		list-style: none;
-	}
-
-	.price {
-		float: right;
-	}
-
+page-cart {
 	ion-content {
 		background: -webkit-linear-gradient(to right, #4b79a1, #283e51);
 		background: linear-gradient(to right, #4b79a1, #283e51);
+	}
+
+	.price {
+		font-size: 18px;
+		font-weight: 500;
 	}
 
 	.toolbar-background {
@@ -21,4 +14,5 @@ page-home {
 		background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
 		background: linear-gradient(to right, #F2C94C, #F2994A);
 	}
+
 }

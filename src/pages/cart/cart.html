@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Cart
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only clear (click)="closeModal()"><ion-icon name="close"></ion-icon>
+      		</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-list-header>{{Products.length > 0 ? 'Your Purchase' : 'Cart is empty'}}</ion-list-header>
+		<ion-item *ngFor="let product of Products; let i = index">
+			<ion-thumbnail item-start>
+				<img src="../assets/img/{{product.imgUrl}}">
+			</ion-thumbnail>
+			<h2>{{product.name}}<p>x5</p></h2>
+			<button ion-button clear item-end (click)="deleteProduct(product, i)">Remove</button>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="Products.length > 0">
+		<ion-list-header>
+			<h2>Total: ${{price}}</h2>
+			<br />
+			<span>Enter your name for confirmation</span>
+		</ion-list-header>
+		<ion-item>
+			<ion-label floating>First Name</ion-label>
+			<ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Last Name</ion-label>
+			<ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
+		</ion-item>
+		<ion-item><button ion-button color="default" outline icon-right (click)="placeOrder()">
+			PLACE ORDER<ion-icon name="arrow-forward"></ion-icon>
+		</button></ion-item>
+	</ion-list>
+</ion-content>
