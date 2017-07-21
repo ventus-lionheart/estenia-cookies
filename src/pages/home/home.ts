@@ -44,6 +44,10 @@ export class HomePage {
 				firstName: this.user.firstName,
 				lastName: this.user.lastName,
 				location: this.user.location
+			},
+			{
+				showBackdrop: true,
+				enableBackdropDismiss: false
 			});
 		modal.onDidDismiss(data => {
 				this.cart = data.cart;
