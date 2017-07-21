@@ -10,7 +10,7 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 	<ion-list>
 		<ion-list-header>
 			<h2>{{Products.length > 0 ? 'Your Purchase' : 'Cart is empty'}}</h2>
@@ -57,7 +57,7 @@
 		</ion-item>
 		<ion-item></ion-item>
 	</ion-list>
-	<div padding *ngIf="Products.length > 0">
+	<div *ngIf="Products.length > 0">
 		<button ion-button block (click)="placeOrder()">PLACE ORDER</button>
 	</div>
 </ion-content>

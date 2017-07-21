@@ -11,4 +11,16 @@ export class AboutPage {
 
   }
 
+  locations = [
+	  {
+		  name: 'Miami', address: 'Miami, FL, United States', imgUrl: 'miami.png'
+	  },
+	  {
+		  name: 'Boca Raton', address: 'Boca Raton, FL, United States', imgUrl: 'boca.png'
+	  },
+	  {
+		  name: 'Gainesville', address: 'Gainesville, FL, United States', imgUrl: 'gville.png'
+	  }
+  ]
+
 }

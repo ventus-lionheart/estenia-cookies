@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Platform, NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   	selector: 'page-cart',
   	templateUrl: 'cart.html'
 })
 export class CartPage {
-	constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-		console.log(navParams.get('data'));
-		console.log(navParams.get('quantity'));
-	}
+	constructor(public platform: Platform, navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) { }
 
 	Products = this.navParams.get('data');
 	quantity = this.navParams.get('quantity');
 	price = this.navParams.get('price');
 	user = {
-		firstName: "",
-		lastName: "",
-		location: ""
+		firstName: this.navParams.get('firstName'),
+		lastName: this.navParams.get('lastName'),
+		location: this.navParams.get('location')
 	}
 
 	deleteProduct(product, i) {
@@ -39,8 +36,9 @@ export class CartPage {
 		this.Products.splice(0, this.Products.length);
 		this.quantity = 0;
 		this.price = 0;
-		console.log("Order Placed");
-		this.closeModal();
+		this.user.firstName = this.user.firstName;
+		this.user.lastName = this.user.lastName,
+		this.user.location = this.user.location;
 	}
 
 	closeModal() {
@@ -48,7 +46,8 @@ export class CartPage {
 			cart: this.Products,
 			quantity: this.quantity,
 			price: this.price,
-			name: this.user.firstName + ' ' + this.user.lastName,
+			firstName: this.user.firstName,
+			lastName: this.user.lastName,
 			location: this.user.location
 		}
 		this.viewCtrl.dismiss(data);

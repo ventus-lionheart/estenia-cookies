@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { Platform, NavController, ModalController } from 'ionic-angular';
 import { CartPage } from '../cart/cart';
 
 @Component({
@@ -8,7 +8,7 @@ import { CartPage } from '../cart/cart';
 })
 export class HomePage {
 
-  	constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  	constructor(public platform: Platform, navCtrl: NavController, public modalCtrl: ModalController) {
 
   	}
 
@@ -20,10 +20,11 @@ export class HomePage {
 		{name: 'M&M', description: 'Who can forget M&M', price: '2.50', imgUrl: 'm&m.jpg'}
 	];
 
-	user: {
-		name: string,
-		location: string
-	}
+	user = {
+		firstName: "",
+		lastName: "",
+		location: ""
+	};
 	cart = [];
 	cartQuantity = 0;
 	totalPrice = 0;
@@ -35,13 +36,22 @@ export class HomePage {
 	}
 
 	openCart(){
-		let modal = this.modalCtrl.create(CartPage, { data: this.cart, quantity: this.cartQuantity, price: this.totalPrice });
+		let modal = this.modalCtrl.create(CartPage,
+			{
+				data: this.cart,
+				quantity: this.cartQuantity,
+				price: this.totalPrice,
+				firstName: this.user.firstName,
+				lastName: this.user.lastName,
+				location: this.user.location
+			});
 		modal.onDidDismiss(data => {
-     		this.cart = data.cart;
-			this.cartQuantity = data.quantity;
-			this.totalPrice = data.price;
-			this.user.name = data.name;
-			this.user.location = data.location;
+				this.cart = data.cart;
+				this.cartQuantity = data.quantity;
+				this.totalPrice = data.price;
+				this.user.firstName = data.firstName;
+				this.user.lastName = data.lastName;
+				this.user.location = data.location;
    		});
     	modal.present();
 	}
