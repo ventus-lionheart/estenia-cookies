@@ -20,8 +20,11 @@ export class HomePage {
 		{name: 'M&M', description: 'Who can forget M&M', price: '2.50', imgUrl: 'm&m.jpg'}
 	];
 
+	user: {
+		name: string,
+		location: string
+	}
 	cart = [];
-
 	cartQuantity = 0;
 	totalPrice = 0;
 
@@ -29,8 +32,6 @@ export class HomePage {
 		this.cart.push(cookie);
 		this.cartQuantity++;
 		this.totalPrice = this.totalPrice + parseFloat(cookie.price);
-		console.log(this.cart);
-		console.log(this.totalPrice);
 	}
 
 	openCart(){
@@ -39,6 +40,8 @@ export class HomePage {
      		this.cart = data.cart;
 			this.cartQuantity = data.quantity;
 			this.totalPrice = data.price;
+			this.user.name = data.name;
+			this.user.location = data.location;
    		});
     	modal.present();
 	}
