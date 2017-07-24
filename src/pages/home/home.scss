@@ -21,4 +21,13 @@ page-home {
 		background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
 		background: linear-gradient(to right, #F2C94C, #F2994A);
 	}
+
+	.welcome-message, .welcome {
+		color: white;
+		text-align: center;
+	}
+
+	.welcome-message {
+		font-size: 16px;
+	}
 }

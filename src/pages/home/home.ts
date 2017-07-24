@@ -12,6 +12,7 @@ export class HomePage {
 
   	}
 
+	// Create array of cookie objects
   	Cookies = [
 		{name: 'Chocolate Chip', description: 'Our most popular cookie', price: '3.99', imgUrl: 'chocolate-chip.jpg'},
 		{name: 'Snickerdoodles', description: 'The taste that you will always remember', price: '2.99', imgUrl: 'snickerdoodles.jpg'},
@@ -20,22 +21,31 @@ export class HomePage {
 		{name: 'M&M', description: 'Who can forget M&M', price: '2.50', imgUrl: 'm&m.jpg'}
 	];
 
+	// Create user
 	user = {
 		firstName: "",
 		lastName: "",
 		location: ""
 	};
+
+	// Create a cart, quantity, and price
 	cart = [];
 	cartQuantity = 0;
 	totalPrice = 0;
 
+	// Function to add a cookie to cart
 	addToCart(cookie) {
+		// Push cookie object to cart array
 		this.cart.push(cookie);
+		// Increase quantity
 		this.cartQuantity++;
+		// Calculate total price
 		this.totalPrice = this.totalPrice + parseFloat(cookie.price);
 	}
 
+	// Fuction to present modal page and pass and retrieve data
 	openCart(){
+		// Create modal and pass user data
 		let modal = this.modalCtrl.create(CartPage,
 			{
 				data: this.cart,
@@ -49,6 +59,7 @@ export class HomePage {
 				showBackdrop: true,
 				enableBackdropDismiss: false
 			});
+		// On dismiss, retrieve order data from modal page
 		modal.onDidDismiss(data => {
 				this.cart = data.cart;
 				this.cartQuantity = data.quantity;
@@ -57,6 +68,7 @@ export class HomePage {
 				this.user.lastName = data.lastName;
 				this.user.location = data.location;
    		});
+		// Present the modal
     	modal.present();
 	}
 }

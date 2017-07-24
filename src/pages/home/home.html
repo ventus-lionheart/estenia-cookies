@@ -10,28 +10,26 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col col-12>
-				<ul>
-					<li *ngFor="let cookie of Cookies; let i = index">
-						<ion-card>
-							<img src="../assets/img/{{cookie.imgUrl}}" />
-							<ion-card-content>
-								<ion-card-title>
-									{{cookie.name}}<span class="price">${{cookie.price}}</span>
-								</ion-card-title>
-								<p>
-									{{cookie.description}}
-								</p>
-								<button ion-button color="default" outline icon-left (click)="addToCart(cookie)">
+	<h2 class="welcome">Welcome to Estenia's Cookies</h2>
+	<p class="welcome-message">
+		Our cookies are sold 5 at a time!
+	</p>
+	<ul>
+		<li *ngFor="let cookie of Cookies; let i = index">
+			<ion-card>
+				<img src="../assets/img/{{cookie.imgUrl}}" />
+				<ion-card-content>
+					<ion-card-title>
+						{{cookie.name}}<span class="price">${{cookie.price}}</span>
+					</ion-card-title>
+					<p>
+						{{cookie.description}}
+					</p>
+					<button ion-button color="default" outline icon-left (click)="addToCart(cookie)">
 									<ion-icon name="add"></ion-icon>ADD
 								</button>
-							</ion-card-content>
-						</ion-card>
-					</li>
-				</ul>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+				</ion-card-content>
+			</ion-card>
+		</li>
+	</ul>
 </ion-content>
