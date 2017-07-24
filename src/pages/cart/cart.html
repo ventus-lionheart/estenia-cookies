@@ -17,14 +17,14 @@
 		</ion-list-header>
 		<ion-item *ngFor="let product of Products; let i = index">
 			<ion-thumbnail item-start>
-				<img src="../assets/img/{{product.imgUrl}}">
+				<img src="assets/img/{{product.imgUrl}}">
 			</ion-thumbnail>
 			<h2>{{product.name}}<p>x5</p></h2>
 			<button ion-button clear item-end (click)="deleteProduct(product, i)">Remove</button>
 		</ion-item>
 		<ion-item *ngIf="Products.length > 0">
 			<ion-thumbnail item-start>
-				<img src="../assets/img/price.png">
+				<img src="assets/img/price.png">
 			</ion-thumbnail>
 			<h2>Total: ${{price.toFixed(2)}}</h2></ion-item>
 	</ion-list>
