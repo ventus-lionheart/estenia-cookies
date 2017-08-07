@@ -5,6 +5,7 @@ A shopping mobile and hybrid app build with Ionic 2 and Cordova. The app is a mo
 To run the app in an iOS simulation: 
 
 ```bash
+$ npm install
 $ sudo npm install -g ionic cordova
 $ ionic cordova platform add ios
 $ ionic cordova run ios
