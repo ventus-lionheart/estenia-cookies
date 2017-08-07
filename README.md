@@ -1,26 +1,13 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
-
-## How to use this template
-
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+# Estenia's Cookies 
+A shopping mobile and hybrid app build with Ionic 2 and Cordova. The app is a mock cookie ordering app built completely on the frontend. No database is used and all data is stored locally. An API can be used with services if needed.  
 
 ### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+To run the app in an iOS simulation: 
 
 ```bash
 $ sudo npm install -g ionic cordova
-$ ionic start myTabs tabs
-```
-
-Then, to run it, cd into `myTabs` and run:
-
-```bash
 $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
-
 Substitute ios for android if not on a Mac.
 
